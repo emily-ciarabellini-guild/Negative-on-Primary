@@ -38,6 +38,7 @@ def writeToCSV(list,filename):
 
 
 allSTLIs = createListfromCSV('MLB_STLIs.csv')
+resolvedItems = createListfromCSV('Resolved_items.csv')
 
 #add termcode_studentID key to last column of the STLI table
 for line in allSTLIs:
@@ -65,13 +66,18 @@ for n in negativeSTLIs:
             results1.append(n)
 
 #remove Bellevue and PG (likely all model A. Verify as needed.)
-results = []
-count = 0 
+results2 = []
 for r in results1:
     if (r[8] != "Bellevue University") & (r[8] != "Purdue Global"):
+        results2.append(r)
+
+#remove line items already resolved
+results = []
+count = 0 
+for r in results2:
+    if [r[11]] not in resolvedItems:
         results.append(r)
         count = count + 1
-
 
 print(f"There are {count} results.")
 writeToCSV(results,'results.csv')
