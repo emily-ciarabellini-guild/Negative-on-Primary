@@ -65,10 +65,10 @@ for n in negativeSTLIs:
             results1.append(p)
             results1.append(n)
 
-#remove Bellevue and PG (likely all model A. Verify as needed.)
+#remove Bellevue, PG, UMass Global (likely all model A. Verify as needed.)
 results2 = []
 for r in results1:
-    if (r[8] != "Bellevue University") & (r[8] != "Purdue Global"):
+    if (r[8] != "Bellevue University") & (r[8] != "Purdue Global") & (r[8] !="University of Massachusetts Global"):
         results2.append(r)
 
 #remove line items already resolved
